@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Christy Diaz — Painter & Mixed Media Artist</title>
+<meta name="description" content="Original paintings and mixed-media works by Christy Diaz. Botanicals, animal portraits, and abstract studies in acrylic, ink, and scratchboard." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@200..700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink:        #0d0712;
+    --ink-2:      #16091e;
+    --ink-3:      #20122c;
+    --plum:       #2a1438;
+    --cream:      #f4ebd9;
+    --cream-dim:  #d9cdb6;
+    --lavender:   #b5a0c9;
+    --lavender-2: #8d76a5;
+    --gold:       #c9a961;
+    --gold-soft:  #e0c987;
+    --magenta:    #d6478a;
+    --rule:       rgba(244, 235, 217, 0.14);
+    --rule-2:     rgba(244, 235, 217, 0.06);
+
+    --display: 'Fraunces', 'Times New Roman', serif;
+    --body:    'Outfit', system-ui, sans-serif;
+    --mono:    'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--body);
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Subtle grain overlay across the entire site */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  /* Soft aurora glow in the background */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 800px 600px at 15% 10%, rgba(141, 118, 165, 0.18), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 85% 80%, rgba(214, 71, 138, 0.10), transparent 55%),
+      radial-gradient(ellipse 600px 400px at 50% 100%, rgba(201, 169, 97, 0.08), transparent 50%);
+  }
+
+  main, header, footer { position: relative; z-index: 1; }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--ink);
+  }
+
+  /* ==================== TYPOGRAPHY ==================== */
+
+  .display {
+    font-family: var(--display);
+    font-weight: 350;
+    font-style: normal;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+  }
+
+  .display em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-soft);
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--lavender);
+  }
+
+  .meta {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--cream-dim);
+  }
+
+  /* ==================== NAVIGATION ==================== */
+
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.5rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(12px);
+    background: rgba(13, 7, 18, 0.6);
+    border-bottom: 1px solid var(--rule-2);
+    transition: padding 0.4s ease;
+  }
+
+  .nav-mark {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    color: var(--cream);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .nav-mark::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--gold);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--cream-dim);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .nav-links a:hover { color: var(--gold-soft); }
+
+  .nav-cta {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink);
+    background: var(--gold-soft);
+    text-decoration: none;
+    padding: 0.65rem 1.2rem;
+    border-radius: 999px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-cta:hover {
+    background: var(--cream);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 720px) {
+    .nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+  }
+
+  /* ==================== HERO ==================== */
+
+  .hero {
+    min-height: 100vh;
+    padding: 8rem 2.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-text { position: relative; }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-size: clamp(3.5rem, 9vw, 8.5rem);
+    margin-bottom: 2rem;
+  }
+
+  .hero-tagline {
+    font-family: var(--display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+    color: var(--cream-dim);
+    max-width: 32ch;
+    line-height: 1.4;
+    margin-bottom: 3rem;
+    font-variation-settings: "opsz" 14, "SOFT" 100;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    max-width: 480px;
+  }
+
+  .stat-num {
+    font-family: var(--display);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--gold-soft);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--lavender);
+  }
+
+  .hero-image-wrap {
+    position: relative;
+    aspect-ratio: 4/5;
+    max-height: 75vh;
+  }
+
+  .hero-image-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -1.5rem;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    pointer-events: none;
+  }
+
+  .hero-image-wrap::after {
+    content: '';
+    position: absolute;
+    top: -2rem;
+    right: -2rem;
+    width: 60px;
+    height: 60px;
+    border-top: 1px solid var(--gold);
+    border-right: 1px solid var(--gold);
+    pointer-events: none;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+    filter: brightness(1.02) saturate(1.05);
+    box-shadow:
+      0 30px 80px -20px rgba(0,0,0,0.6),
+      0 0 0 1px var(--rule);
+  }
+
+  .hero-caption {
+    position: absolute;
+    bottom: -3rem;
+    left: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .hero-caption .num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+  }
+
+  .hero-caption .title {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--cream-dim);
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--lavender-2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .scroll-cue::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--lavender-2), transparent);
+    animation: scrollPulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
+    50%      { opacity: 1;   transform: scaleY(1); }
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      padding: 7rem 1.5rem 3rem;
+    }
+    .hero-image-wrap { max-height: 60vh; aspect-ratio: 4/5; order: 2; }
+    .hero-caption { position: static; margin-top: 1.5rem; }
+    .scroll-cue { display: none; }
+  }
+
+  /* ==================== STATEMENT ==================== */
+
+  .statement {
+    padding: 8rem 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2.2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .statement-label {
+    position: sticky;
+    top: 8rem;
+  }
+
+  .statement-label .num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .statement-label h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: var(--cream);
+    font-variation-settings: "opsz" 24, "SOFT" 100;
+  }
+
+  .statement-body p {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(1.4rem, 2.4vw, 2.1rem);
+    line-height: 1.4;
+    color: var(--cream);
+    font-variation-settings: "opsz" 28, "SOFT" 50;
+    margin-bottom: 1.8rem;
+  }
+
+  .statement-body p em {
+    font-style: italic;
+    color: var(--gold-soft);
+  }
+
+  .statement-body p:last-child {
+    color: var(--cream-dim);
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    font-family: var(--body);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 900px) {
+    .statement {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding: 5rem 1.5rem;
+    }
+    .statement-label { position: static; }
+  }
+
+  /* ==================== GALLERY ==================== */
+
+  .gallery {
+    padding: 4rem 2.5rem 8rem;
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
+  .gallery-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
+    align-items: end;
+    margin-bottom: 6rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .gallery-head h2 {
+    font-family: var(--display);
+    font-weight: 350;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+
+  .gallery-head h2 em {
+    font-style: italic;
+    color: var(--gold-soft);
+  }
+
+  .gallery-head .count {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--lavender);
+  }
+
+  /* Editorial irregular grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 4rem 2.5rem;
+  }
+
+  .work {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .work-frame {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink-2);
+    border-radius: 2px;
+  }
+
+  .work-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(13, 7, 18, 0.6));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  .work img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.6s ease;
+  }
+
+  .work:hover img {
+    transform: scale(1.04);
+    filter: brightness(1.08) saturate(1.1);
+  }
+
+  .work:hover .work-frame::after { opacity: 1; }
+
+  .work-caption {
+    margin-top: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 1rem;
+  }
+
+  .work-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+
+  .work h3 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    color: var(--cream);
+    font-variation-settings: "opsz" 18, "SOFT" 100;
+  }
+
+  .work .specs {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--cream-dim);
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  .work .specs .status {
+    color: var(--gold-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  .work .specs .status.sold { color: var(--lavender-2); }
+
+  /* Layout assignments — editorial irregularity */
+  .work-1 { grid-column: 2 / span 6; }      /* Leopard - large left */
+  .work-2 { grid-column: 9 / span 4; margin-top: 8rem; } /* Veronica - small right, dropped */
+  .work-3 { grid-column: 1 / span 4; }      /* Cherry blossoms - left */
+  .work-4 { grid-column: 6 / span 7; margin-top: 6rem; } /* Cipher - large right */
+  .work-5 { grid-column: 2 / span 4; margin-top: 4rem; } /* Octopus */
+  .work-6 { grid-column: 7 / span 4; }      /* Stellate */
+  .work-7 { grid-column: 1 / span 12; }     /* Peacock - full width finale */
+
+  .work-7 .work-frame {
+    aspect-ratio: 16/8;
+  }
+
+  @media (max-width: 1100px) {
+    .grid { gap: 3rem 1.5rem; }
+    .work-1 { grid-column: 1 / span 7; }
+    .work-2 { grid-column: 8 / span 5; margin-top: 4rem; }
+    .work-3 { grid-column: 1 / span 5; }
+    .work-4 { grid-column: 6 / span 7; margin-top: 3rem; }
+    .work-5 { grid-column: 1 / span 6; margin-top: 2rem; }
+    .work-6 { grid-column: 7 / span 6; }
+    .work-7 .work-frame { aspect-ratio: 16/9; }
+  }
+
+  @media (max-width: 720px) {
+    .gallery { padding: 2rem 1.25rem 5rem; }
+    .gallery-head {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+    .grid { gap: 3rem; }
+    .work,
+    .work-1, .work-2, .work-3, .work-4, .work-5, .work-6, .work-7 {
+      grid-column: 1 / -1;
+      margin-top: 0;
+    }
+    .work-7 .work-frame { aspect-ratio: 4/3; }
+  }
+
+  /* ==================== INQUIRE ==================== */
+
+  .inquire {
+    background: var(--ink-2);
+    padding: 8rem 2.5rem;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .inquire::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 50%, rgba(201, 169, 97, 0.08), transparent 40%),
+      radial-gradient(circle at 80% 30%, rgba(214, 71, 138, 0.06), transparent 40%);
+    pointer-events: none;
+  }
+
+  .inquire-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .inquire h2 {
+    font-family: var(--display);
+    font-weight: 350;
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .inquire h2 em {
+    font-style: italic;
+    color: var(--gold-soft);
+  }
+
+  .inquire-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--cream-dim);
+    max-width: 50ch;
+  }
+
+  .inquire-card {
+    background: var(--ink);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 2.5rem;
+    position: relative;
+  }
+
+  .inquire-card::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 2rem;
+    right: 2rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .contact-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule-2);
+  }
+
+  .contact-row:last-of-type { border-bottom: none; }
+
+  .contact-row .label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--lavender);
+  }
+
+  .contact-row .value {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--cream);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .contact-row a.value:hover { color: var(--gold-soft); }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+    padding: 1rem 1.6rem;
+    background: var(--gold-soft);
+    color: var(--ink);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    transition: all 0.3s ease;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .button:hover {
+    background: var(--cream);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px -10px rgba(201, 169, 97, 0.4);
+  }
+
+  .button .arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .button:hover .arrow { transform: translateX(4px); }
+
+  @media (max-width: 900px) {
+    .inquire { padding: 5rem 1.5rem; }
+    .inquire-inner { grid-template-columns: 1fr; gap: 3rem; }
+  }
+
+  /* ==================== FOOTER ==================== */
+
+  .footer {
+    padding: 3rem 2.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-mark {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--cream-dim);
+  }
+
+  .footer-meta {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--lavender-2);
+  }
+
+  /* ==================== REVEAL ANIMATIONS ==================== */
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal.delay-1 { transition-delay: 0.1s; }
+  .reveal.delay-2 { transition-delay: 0.2s; }
+  .reveal.delay-3 { transition-delay: 0.3s; }
+  .reveal.delay-4 { transition-delay: 0.4s; }
+  .reveal.delay-5 { transition-delay: 0.5s; }
+
+  /* Hero entrance — runs immediately */
+  .hero-eyebrow,
+  .hero h1,
+  .hero-tagline,
+  .hero-stats,
+  .hero-image-wrap {
+    opacity: 0;
+    animation: rise 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  .hero-eyebrow   { animation-delay: 0.1s; }
+  .hero h1        { animation-delay: 0.25s; }
+  .hero-tagline   { animation-delay: 0.45s; }
+  .hero-stats     { animation-delay: 0.6s; }
+  .hero-image-wrap { animation-delay: 0.35s; }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <a href="#top" class="nav-mark">Christy Diaz</a>
+  <ul class="nav-links">
+    <li><a href="#statement">Statement</a></li>
+    <li><a href="#works">Works</a></li>
+    <li><a href="#inquire">Inquire</a></li>
+  </ul>
+  <a href="#inquire" class="nav-cta">Commission</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-text">
+    <div class="hero-eyebrow eyebrow">Painter · Mixed Media · Est. South Euclid, OH</div>
+    <h1 class="display">
+      Christy<br/>
+      <em>Diaz</em>
+    </h1>
+    <p class="hero-tagline">
+      Original paintings &amp; mixed-media works exploring color, texture, and quiet wonder — one canvas at a time.
+    </p>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">7</div>
+        <div class="stat-label">Featured Works</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Active Series</div>
+      </div>
+      <div>
+        <div class="stat-num">∞</div>
+        <div class="stat-label">In Studio</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-image-wrap">
+    <img class="hero-image" src="artwork/peacock.jpg" alt="Lila Plume — peacock painting in blue, magenta, and gold" />
+    <div class="hero-caption">
+      <span class="num">FEATURED · 07</span>
+      <span class="title">Lila Plume, 2025</span>
+    </div>
+  </div>
+
+  <div class="scroll-cue">Scroll</div>
+</header>
+
+<!-- ============ STATEMENT ============ -->
+<section class="statement" id="statement">
+  <div class="statement-label reveal">
+    <span class="num">01 / Statement</span>
+    <h2>On the practice</h2>
+  </div>
+  <div class="statement-body">
+    <p class="reveal">
+      I paint to slow the world down. Each piece begins with a single color held against the dark, and grows outward from there — <em>petal, feather, scale, spark</em> — until the canvas tells me it's finished.
+    </p>
+    <p class="reveal delay-1">
+      My work moves between three modes: botanical studies in acrylic, animal portraiture in restrained palettes, and scratchboard abstractions where pattern becomes a kind of meditation. What ties them together is a deep love of ornament and a faith that beauty is worth taking seriously.
+    </p>
+    <p class="reveal delay-2">
+      Every piece on this site is an original — hand-painted, signed, and available for inquiry. Commissions are accepted on a rolling basis throughout the year.
+    </p>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery" id="works">
+  <div class="gallery-head">
+    <span class="eyebrow">02 / Selected Works</span>
+    <h2 class="display">A small <em>catalogue</em></h2>
+    <span class="count">— 07 PIECES</span>
+  </div>
+
+  <div class="grid">
+
+    <!-- 01 Leopard -->
+    <article class="work work-1 reveal">
+      <div class="work-frame">
+        <img src="artwork/leopard.jpg" alt="Violet Sentinel — leopard portrait in monochrome violet" />
+      </div>
+      <div class="work-caption">
+        <div>
+          <span class="work-num">№ 01 · Studies in Violet</span>
+          <h3>Violet Sentinel</h3>
+        </div>
+        <div class="specs">
+          Acrylic on canvas<br/>
+          16 × 20 in · 2024<br/>
+          <span class="status">Available</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 Veronica -->
+    <article class="work work-2 reveal">
+      <div class="work-frame">
+        <img src="artwork/veronica.jpg" alt="Bridal Veronica — white florals on lavender ground" />
+      </div>
+      <div class="work-caption">
+        <div>
+          <span class="work-num">№ 02 · Botanicals</span>
+          <h3>Bridal Veronica</h3>
+        </div>
+        <div class="specs">
+          Acrylic on canvas<br/>
+          11 × 14 in · 2025<br/>
+          <span class="status">Available</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 Cherry -->
+    <article class="work work-3 reveal">
+      <div class="work-frame">
+        <img src="artwork/cherry.jpg" alt="First Bloom — cherry blossom branches with gold leaf" />
+      </div>
+      <div class="work-caption">
+        <div>
+          <span class="work-num">№ 03 · Botanicals</span>
+          <h3>First Bloom</h3>
+        </div>
+        <div class="specs">
+          Acrylic &amp; gold leaf<br/>
+          11 × 14 in · 2024<br/>
+          <span class="status">Available</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 04 Cipher -->
+    <article class="work work-4 reveal">
+      <div class="work-frame">
+        <img src="artwork/cipher.jpg" alt="Cipher — pastel scratchboard abstraction with geometric symbols" />
+      </div>
+      <div class="work-caption">
+        <div>
+          <span class="work-num">№ 04 · Scratch Series</span>
+          <h3>Cipher</h3>
+        </div>
+        <div class="specs">
+          Mixed media on board<br/>
+          9 × 12 in · 2025<br/>
+          <span class="status">Available</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 05 Octopus -->
+    <article class="work work-5 reveal">
+      <div class="work-frame">
+        <img src="artwork/octopus.jpg" alt="Inkbearer — octopus mandala in pastel scratchboard" />
+      </div>
+      <div class="work-caption">
+        <div>
+          <span class="work-num">№ 05 · Scratch Series</span>
+          <h3>Inkbearer</h3>
+        </div>
+        <div class="specs">
+          Mixed media on board<br/>
+          9 × 12 in · 2025<br/>
+          <span class="status">Available</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 06 Stellate -->
+    <article class="work work-6 reveal">
+      <div class="work-frame">
+        <img src="artwork/stellate.jpg" alt="Stellate — pointillist dot composition on black" />
+      </div>
+      <div class="work-caption">
+        <div>
+          <span class="work-num">№ 06 · Scratch Series</span>
+          <h3>Stellate</h3>
+        </div>
+        <div class="specs">
+          Mixed media on board<br/>
+          9 × 12 in · 2025<br/>
+          <span class="status">Available</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 07 Peacock -->
+    <article class="work work-7 reveal">
+      <div class="work-frame">
+        <img src="artwork/peacock.jpg" alt="Lila Plume — ornate peacock painting with glitter and gold" />
+      </div>
+      <div class="work-caption">
+        <div>
+          <span class="work-num">№ 07 · Studies in Violet  ·  Featured</span>
+          <h3>Lila Plume</h3>
+        </div>
+        <div class="specs">
+          Acrylic, ink &amp; glitter<br/>
+          11 × 14 in · 2025<br/>
+          <span class="status">Available</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ INQUIRE ============ -->
+<section class="inquire" id="inquire">
+  <div class="inquire-inner">
+    <div class="inquire-text reveal">
+      <span class="eyebrow" style="display:block; margin-bottom: 1.5rem;">03 / Inquire</span>
+      <h2 class="display">Take a piece <em>home</em>.</h2>
+      <p>
+        All works on view are originals and available for purchase. I also welcome conversations about commissions — pet portraits, botanicals, or something entirely new. Reach out and tell me what you're imagining; I'll get back to you within a couple of days.
+      </p>
+    </div>
+
+    <div class="inquire-card reveal delay-2">
+      <div class="contact-row">
+        <span class="label">Email</span>
+        <a class="value" href="mailto:hello@christydiazart.com">hello@christydiazart.com</a>
+      </div>
+      <div class="contact-row">
+        <span class="label">Studio</span>
+        <span class="value">South Euclid, Ohio</span>
+      </div>
+      <div class="contact-row">
+        <span class="label">Instagram</span>
+        <a class="value" href="#">@christydiazart</a>
+      </div>
+      <div class="contact-row">
+        <span class="label">Response</span>
+        <span class="value">Within 48 hours</span>
+      </div>
+
+      <a href="mailto:hello@christydiazart.com" class="button">
+        <span>Begin a Conversation</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-mark">© 2026 Christy Diaz · <em>All works original</em></div>
+  <div class="footer-meta">Site by hand · No prints, no reproductions</div>
+</footer>
+
+<script>
+  // Reveal-on-scroll using IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Subtle parallax on hero image
+  const heroImg = document.querySelector('.hero-image');
+  if (heroImg && window.matchMedia('(min-width: 901px)').matches) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y < 800) {
+        heroImg.style.transform = `translateY(${y * 0.06}px)`;
+      }
+    }, { passive: true });
+  }
+
+  // Slim the nav on scroll
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      nav.style.padding = '0.85rem 2.5rem';
+    } else {
+      nav.style.padding = '1.5rem 2.5rem';
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
